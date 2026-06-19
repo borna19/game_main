@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block title %}Play Game - Palm Catch{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-10 mx-auto">
+        <h1 class="text-center mb-4 text-light">🎮 Play Palm Catch Game</h1>
+        
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Game Controls & Instructions</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <h5>🎯 How to Play:</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">✅ Show your hand to activate the spider web</li>
+                            <li class="list-group-item">✅ Move your hand to control the web position</li>
+                            <li class="list-group-item">✅ Catch falling balls to score points</li>
+                            <li class="list-group-item">❌ Avoid bombs (gray balls with '!')</li>
+                            <li class="list-group-item">💖 You have 3 lives - don't let balls escape!</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>⚡ Quick Controls:</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>Hand Movement:</strong> Control web position</li>
+                            <li class="list-group-item"><strong>R Key:</strong> Restart game</li>
+                            <li class="list-group-item"><strong>Good Lighting:</strong> Better hand detection</li>
+                        </ul>
+                        <div class="text-center mt-3">
+                            <button class="btn btn-success btn-lg mb-2" onclick="resetGame()">
+                                🔄 Restart Game
+                            </button>
+                            <br>
+                            <small class="text-muted">Or press 'R' key during gameplay</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Feed -->
+                <div class="text-center mb-4">
+                    <h5 class="text-primary">Live Game Feed</h5>
+                    <div class="game-container">
+                        <img src="{{ url_for('video_feed') }}" class="img-fluid rounded shadow game-feed" alt="Live Game Feed" id="gameFeed">
+                    </div>
+                </div>
+
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <div class="alert alert-primary">
+                            <strong>🔴 Red Balls:</strong><br>10 Points
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="alert alert-warning">
+                            <strong>🟡 Yellow Balls:</strong><br>25 Points
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="alert alert-secondary">
+                            <strong>⚫ Gray Balls:</strong><br>Avoid Bombs!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-info text-center">
+                    <strong>💡 Pro Tip:</strong> Ensure good lighting and a clear background for optimal hand detection performance. 
+                    Keep your hand movements smooth and within the camera view.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function resetGame() {
+    fetch('/reset_game')
+        .then(response => response.text())
+        .then(data => {
+            showNotification('Game reset successfully! 🎮', 'success');
+        })
+        .catch(error => {
+            showNotification('Error resetting game ❌', 'error');
+        });
+}
+
+function showNotification(message, type) {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
+    notification.style.cssText = 'top: 80px; right: 20px; z-index: 1050; min-width: 300px;';
+    notification.innerHTML = `
+        ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Auto remove after 3 seconds
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+        }
+    }, 3000);
+}
+
+// Keyboard controls
+document.addEventListener('keydown', function(event) {
+    if ((event.key === 'r' || event.key === 'R') && 
+        !event.target.matches('input, textarea, select')) {
+        event.preventDefault();
+        resetGame();
+    }
+});
+
+// Auto-refresh game feed if it fails
+let refreshAttempts = 0;
+const maxRefreshAttempts = 3;
+
+function checkGameFeed() {
+    const gameFeed = document.getElementById('gameFeed');
+    if (gameFeed && gameFeed.naturalWidth === 0 && refreshAttempts < maxRefreshAttempts) {
+        refreshAttempts++;
+        gameFeed.src = gameFeed.src.split('?')[0] + '?t=' + new Date().getTime();
+        setTimeout(checkGameFeed, 2000);
+    }
+}
+
+// Check game feed every 5 seconds
+setInterval(checkGameFeed, 5000);
+
+// Initial check
+setTimeout(checkGameFeed, 3000);
+</script>
+{% endblock %}

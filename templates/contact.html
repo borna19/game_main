@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-6 mx-auto">
+        <h1 class="display-4 text-center mb-4">Contact Us</h1>
+        
+        <div class="card">
+            <div class="card-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" class="form-control" id="subject" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-body text-center">
+                <h5>Technical Support</h5>
+                <p class="mb-1">For technical issues with the game, please ensure:</p>
+                <ul class="list-unstyled">
+                    <li>✅ Your webcam is connected and working</li>
+                    <li>✅ You've allowed camera access in your browser</li>
+                    <li>✅ There's adequate lighting in your room</li>
+                    <li>✅ You're using a modern browser (Chrome, Firefox, Edge)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

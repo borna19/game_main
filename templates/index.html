@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Palm Catch Game{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="row align-items-center min-vh-100 py-5">
+    <div class="col-lg-6">
+        <h1 class="display-3 fw-bold mb-4">🎮 Palm Catch Game</h1>
+        <p class="lead mb-4 fs-4">Experience the future of gaming with hand gesture control! Catch falling balls using your hand movements in this exciting webcam-based game.</p>
+        <p class="text-light mb-5 fs-5">No controllers needed - just use your hand to control the spider web and catch the falling balls. Avoid bombs and score as many points as you can!</p>
+        <div class="d-grid gap-3 d-md-flex justify-content-md-start mt-4">
+            <a href="{{ url_for('game') }}" class="btn btn-primary btn-lg px-5 py-3 me-md-4 fs-5">
+                🎯 Play Now
+            </a>
+            <a href="{{ url_for('about') }}" class="btn btn-outline-secondary btn-lg px-5 py-3 fs-5">
+                📖 Learn More
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-6 mt-5 mt-lg-0">
+        <div class="text-center">
+            <div class="game-preview">
+                <div class="bg-dark rounded shadow-lg" style="height: 400px; display: flex; align-items: center; justify-content: center; border: 3px solid #e74c3c;">
+                    <div class="text-center text-light p-4">
+                        <div style="font-size: 6rem;">🕸️</div>
+                        <h3 class="mt-3">Live Hand Tracking</h3>
+                        <p class="mb-0 fs-5">Real-time webcam gameplay</p>
+                        <p class="mt-2 text-warning">No downloads required!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Spacer -->
+<div class="py-5"></div>
+
+<!-- Features Section -->
+<div class="row mt-5 py-5">
+    <div class="col-12 text-center mb-5">
+        <h2 class="display-5 fw-bold mb-3">🌟 Amazing Features</h2>
+        <p class="lead fs-4">Discover what makes Palm Catch Game unique and exciting!</p>
+    </div>
+    
+    <div class="col-md-4 text-center mb-5">
+        <div class="feature-box p-5 h-100">
+            <div class="mb-4" style="font-size: 4rem;">👋</div>
+            <h3 class="mb-3">Hand Gesture Control</h3>
+            <p class="mb-0 fs-5">Control the game using natural hand movements without any controllers or devices. Just wave your hand and watch the magic happen!</p>
+        </div>
+    </div>
+    
+    <div class="col-md-4 text-center mb-5">
+        <div class="feature-box p-5 h-100">
+            <div class="mb-4" style="font-size: 4rem;">⚡</div>
+            <h3 class="mb-3">Real-time Processing</h3>
+            <p class="mb-0 fs-5">Advanced computer vision algorithms for smooth and responsive gameplay experience. Instant response to your every movement!</p>
+        </div>
+    </div>
+    
+    <div class="col-md-4 text-center mb-5">
+        <div class="feature-box p-5 h-100">
+            <div class="mb-4" style="font-size: 4rem;">🎯</div>
+            <h3 class="mb-3">Multiple Ball Types</h3>
+            <p class="mb-0 fs-5">Catch different types of balls with unique effects, scoring systems, and challenges. Each ball type offers a different experience!</p>
+        </div>
+    </div>
+</div>
+
+<!-- Additional Features -->
+<div class="row mt-3 py-5">
+    <div class="col-md-6 text-center mb-4">
+        <div class="feature-box p-4 h-100">
+            <div class="mb-3" style="font-size: 3.5rem;">🎮</div>
+            <h4 class="mb-3">Easy to Play</h4>
+            <p class="mb-0 fs-5">Simple controls - just show your hand and start playing. No complex setup or learning curve required!</p>
+        </div>
+    </div>
+    
+    <div class="col-md-6 text-center mb-4">
+        <div class="feature-box p-4 h-100">
+            <div class="mb-3" style="font-size: 3.5rem;">🏆</div>
+            <h4 class="mb-3">Compete & Score</h4>
+            <p class="mb-0 fs-5">Challenge yourself to beat your high score. How many points can you achieve?</p>
+        </div>
+    </div>
+</div>
+
+<!-- Spacer -->
+<div class="py-5"></div>
+
+<!-- Game Types Section -->
+<div class="row mt-5 py-5">
+    <div class="col-12 text-center mb-5">
+        <h2 class="display-5 fw-bold mb-3">🎲 Ball Types</h2>
+        <p class="lead fs-4">Different balls, different challenges!</p>
+    </div>
+    
+    <div class="col-md-3 text-center mb-4">
+        <div class="card h-100 border-0">
+            <div class="card-body p-4">
+                <div class="mb-3" style="font-size: 3rem; color: #e74c3c;">🔴</div>
+                <h5 class="card-title">Normal Balls</h5>
+                <p class="card-text">10 points each - the basic challenge!</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 text-center mb-4">
+        <div class="card h-100 border-0">
+            <div class="card-body p-4">
+                <div class="mb-3" style="font-size: 3rem; color: #f39c12;">🟡</div>
+                <h5 class="card-title">Bonus Balls</h5>
+                <p class="card-text">25 points - worth the extra effort!</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 text-center mb-4">
+        <div class="card h-100 border-0">
+            <div class="card-body p-4">
+                <div class="mb-3" style="font-size: 3rem; color: #7f8c8d;">⚫</div>
+                <h5 class="card-title">Bomb Balls</h5>
+                <p class="card-text">Avoid these - they cost you lives!</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3 text-center mb-4">
+        <div class="card h-100 border-0">
+            <div class="card-body p-4">
+                <div class="mb-3" style="font-size: 3rem; color: #9b59b6;">🟣</div>
+                <h5 class="card-title">Fast Balls</h5>
+                <p class="card-text">Extra speed - extra challenge!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Spacer -->
+<div class="py-5"></div>
+
+<!-- Final Call to Action -->
+<div class="row mt-4 py-5">
+    <div class="col-12 text-center">
+        <div class="feature-box p-5">
+            <h2 class="display-5 fw-bold mb-4">🚀 Ready to Play?</h2>
+            <p class="mb-4 fs-4">Join thousands of players experiencing the future of gesture-controlled gaming!</p>
+            <p class="mb-4 fs-5">No downloads • No installations • Play directly in your browser</p>
+            <a href="{{ url_for('game') }}" class="btn btn-primary btn-lg px-5 py-3 fs-4">
+                🎮 Start Playing Now
+            </a>
+            <div class="mt-4">
+                <small class="text-muted">Works on Chrome, Firefox, Edge, and Safari</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Final Spacer -->
+<div class="py-5"></div>
+{% endblock %}

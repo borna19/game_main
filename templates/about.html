@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <h1 class="display-4 text-center mb-4">About Palm Catch Game</h1>
+        
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">🎯 How to Play</h3>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">1. Allow camera access when prompted</li>
+                    <li class="list-group-item">2. Show your hand to make the spider web appear</li>
+                    <li class="list-group-item">3. Move your hand to control the web position</li>
+                    <li class="list-group-item">4. Catch falling balls to score points</li>
+                    <li class="list-group-item">5. Avoid gray bombs with '!' symbol</li>
+                    <li class="list-group-item">6. You have 3 lives - don't let balls escape!</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title">🕹️ Game Features</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Ball Types:</h5>
+                        <ul>
+                            <li><strong>Red Balls:</strong> Normal balls (10 points)</li>
+                            <li><strong>Yellow Balls:</strong> Bonus balls (25 points)</li>
+                            <li><strong>Gray Balls:</strong> Bombs (lose 1 life)</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Controls:</h5>
+                        <ul>
+                            <li><strong>Hand Movement:</strong> Control web position</li>
+                            <li><strong>R Key:</strong> Restart game</li>
+                            <li><strong>Q Key:</strong> Quit game</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">🔧 Technology Stack</h3>
+                <p>This game uses advanced computer vision technologies:</p>
+                <ul>
+                    <li><strong>OpenCV:</strong> Real-time video processing</li>
+                    <li><strong>MediaPipe:</strong> Advanced hand tracking (if available)</li>
+                    <li><strong>Flask:</strong> Web framework for the application</li>
+                    <li><strong>Bootstrap 5:</strong> Responsive web design</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
